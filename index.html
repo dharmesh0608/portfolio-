@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhura Dharmesh | Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">BHURA<span class="thin">DHARMESH</span><span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-item">HOME</a></li>
+            <li><a href="#skills" class="nav-item">SKILLS</a></li>
+            <li><a href="#experience" class="nav-item">JOURNEY</a></li>
+            <li><a href="#contact" class="nav-item">CONTACT</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="resume.pdf" class="resume-btn">RESUME</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-visual" data-aos="fade-right">
+                    <div class="circuit-wrapper">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Tech" class="circuit-img">
+                        <div class="glow-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="hero-content" data-aos="fade-left">
+                    <span class="badge">Building Digital Solutions</span>
+                    <h1 class="name">Bhura Dharmesh</h1>
+                    <h2 class="role-title">Full Stack Developer</h2>
+                    <p class="hero-desc">I transform complex problems into elegant, user-centric web experiences using modern technologies.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn-primary">Hire Me</a>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-heading">Technical Proficiency</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-react skill-icon"></i>
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span>React</span><span>JS (ES6+)</span><span>CSS3</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fab fa-node-js skill-icon"></i>
+                        <h3>Backend</h3>
+                        <div class="skill-tags">
+                            <span>Node.js</span><span>Python</span><span>Express</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fas fa-tools skill-icon"></i>
+                        <h3>Tools</h3>
+                        <div class="skill-tags">
+                            <span>Git</span><span>Docker</span><span>VS Code</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <h2 class="section-heading" data-aos="fade-up">Professional Journey</h2>
+                <div class="timeline-container">
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="marker"></div>
+                        <div class="timeline-card">
+                            <span class="year">2023 - Present</span>
+                            <h3>Full Stack Developer</h3>
+                            <p class="org">Freelance / Project Work</p>
+                            <p>Developing responsive web applications using React and Node.js, focusing on performance and modern UI/UX principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-heading">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Let's Collaborate</h3>
+                        <p>Currently looking for new opportunities. My inbox is always open!</p>
+                        <div class="info-item"><i class="fas fa-envelope"></i> <span>email@example.com</span></div>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span>Gujarat, India</span></div>
+                    </div>
+                    <form id="contact-form" class="glass-form">
+                        <div class="input-group"><input type="text" placeholder="NAME" required></div>
+                        <div class="input-group"><input type="email" placeholder="EMAIL" required></div>
+                        <div class="input-group"><textarea rows="4" placeholder="MESSAGE" required></textarea></div>
+                        <button type="submit" class="btn-primary">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Bhura Dharmesh. Built with Passion.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>
