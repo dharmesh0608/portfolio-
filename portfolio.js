@@ -1,7 +1,7 @@
 /**
  * PORTFOLIO CORE LOGIC
  * Features: AOS, Custom Cursor, Smooth Scroll, Typing Effect, 
- * Form Submission, and Skill Animations.
+ * Form Submission, Skill Animations, and Project Modals.
  */
 
 // 1. Initialize Animate on Scroll
@@ -14,38 +14,39 @@ AOS.init({
 // 2. Custom Cursor Logic
 const cursorDot = document.querySelector(".cursor-dot");
 const cursorOutline = document.querySelector(".cursor-outline");
-const interactables = document.querySelectorAll("a, button, .nav-item, .resume-btn");
+const interactables = document.querySelectorAll("a, button, .nav-item, .resume-btn, .skill-card");
 
 window.addEventListener("mousemove", (e) => {
     const posX = e.clientX;
     const posY = e.clientY;
 
-    // Direct follow for the dot
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
+    if (cursorDot && cursorOutline) {
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
 
-    // Smooth delay follow for the outline using animate API
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    }
 });
 
-// Cursor "Grow" Effect on hover
 interactables.forEach(el => {
-    el.addEventListener("mouseenter", () => cursorOutline.classList.add("cursor-grow"));
-    el.addEventListener("mouseleave", () => cursorOutline.classList.remove("cursor-grow"));
+    el.addEventListener("mouseenter", () => cursorOutline?.classList.add("cursor-grow"));
+    el.addEventListener("mouseleave", () => cursorOutline?.classList.remove("cursor-grow"));
 });
 
 // 3. Navbar Scroll & Blur Effect
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.glass-nav');
-    if (window.scrollY > 50) {
-        nav.style.padding = '0.8rem 8%';
-        nav.style.background = 'rgba(3, 7, 18, 0.95)';
-    } else {
-        nav.style.padding = '1.2rem 8%';
-        nav.style.background = 'rgba(10, 17, 24, 0.8)';
+    if (nav) {
+        if (window.scrollY > 50) {
+            nav.style.padding = '0.8rem 8%';
+            nav.style.background = 'rgba(3, 7, 18, 0.95)';
+        } else {
+            nav.style.padding = '1.2rem 8%';
+            nav.style.background = 'rgba(10, 17, 24, 0.8)';
+        }
     }
 });
 
@@ -63,7 +64,6 @@ if (typingElement) {
             setTimeout(typeWriter, 100);
         }
     }
-    // Start typing after initial AOS animation
     setTimeout(typeWriter, 1200);
 }
 
@@ -75,16 +75,15 @@ const skillObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const progressBars = entry.target.querySelectorAll('.progress');
             progressBars.forEach(bar => {
-                // Get the width from the inline style we set in HTML
                 const targetWidth = bar.style.width;
-                bar.style.width = '0'; // Start at 0
+                bar.style.width = '0'; 
                 setTimeout(() => {
                     bar.style.width = targetWidth;
                     bar.style.opacity = "1";
                     bar.style.transition = "width 1.5s ease-in-out";
                 }, 100);
             });
-            skillObserver.unobserve(entry.target); // Animate only once
+            skillObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
@@ -92,7 +91,64 @@ const skillObserver = new IntersectionObserver((entries) => {
 const skillsSection = document.querySelector('.skills-section');
 if (skillsSection) skillObserver.observe(skillsSection);
 
-// 6. Contact Form Logic (Formspree)
+// 6. Project Modal Logic & Data
+const projectDetails = {
+    portfolio: {
+        title: "Modern Dev Portfolio",
+        tech: "HTML5, CSS3 (Glassmorphism), JavaScript",
+        description: "A high-performance personal website featuring smooth animations, custom cursor, and SEO optimization to showcase my developer journey.",
+        link: "https://github.com/bhura-dharmesh/portfolio"
+    },
+    ecommerce: {
+        title: "E-Commerce Platform",
+        tech: "React, Node.js, MongoDB",
+        description: "A full-stack shopping application with user authentication, a product catalog, and a secure checkout system.",
+        link: "https://github.com/bhura-dharmesh/shop-app"
+    },
+    weather: {
+        title: "Real-time Weather App",
+        tech: "JavaScript, OpenWeather API",
+        description: "An application that fetches and displays live weather data based on the user's location.",
+        link: "https://github.com/bhura-dharmesh/weather-app"
+    }
+};
+
+function openModal(projectId) {
+    const data = projectDetails[projectId];
+    const modal = document.getElementById("projectModal");
+    const body = document.getElementById("modal-body");
+
+    if (data && modal && body) {
+        body.innerHTML = `
+            <h2 style="color:var(--accent-teal); margin-bottom:15px; font-family: 'Space Grotesk', sans-serif;">${data.title}</h2>
+            <p style="margin-bottom:10px;"><strong>Stack:</strong> ${data.tech}</p>
+            <p style="color:var(--text-dim); line-height:1.6;">${data.description}</p>
+            <br>
+            <a href="${data.link}" target="_blank" class="btn-primary" style="text-decoration:none;">View GitHub</a>
+        `;
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("projectModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+// Close modal if user clicks outside of the box
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById("projectModal");
+    if (event.target == modal) {
+        closeModal();
+    }
+});
+
+// 7. Contact Form Logic (Formspree)
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -101,11 +157,10 @@ if (contactForm) {
         const submitBtn = contactForm.querySelector('button');
         const originalText = submitBtn.innerText;
         
-        // Visual feedback for sending
         submitBtn.innerText = "SENDING...";
         submitBtn.disabled = true;
 
-        const formId = 'YOUR_FORM_ID'; // Replace with your Formspree ID
+        const formId = 'dharmeshbhura756@gmail.com'; // Replace with your Formspree ID
         const formData = new FormData(contactForm);
         
         try {
@@ -130,5 +185,5 @@ if (contactForm) {
     });
 }
 
-// 7. Console Greeting
+// 8. Console Greeting
 console.log("%c Portfolio Built by Bhura Dharmesh ", "color: #10b981; font-weight: bold; font-size: 15px;");
