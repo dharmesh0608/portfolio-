@@ -18,6 +18,7 @@
         <ul class="nav-links">
             <li><a href="#home" class="nav-item">HOME</a></li>
             <li><a href="#skills" class="nav-item">SKILLS</a></li>
+            <li><a href="#projects" class="nav-item">WORK</a></li>
             <li><a href="#experience" class="nav-item">JOURNEY</a></li>
             <li><a href="#contact" class="nav-item">CONTACT</a></li>
         </ul>
@@ -86,6 +87,34 @@
             </div>
         </section>
 
+        <section id="projects" class="section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-heading">Featured Projects</h2>
+                <div class="skills-grid">
+                    <div class="skill-card" onclick="openModal('portfolio')">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3>Personal Portfolio</h3>
+                        <p>Modern high-performance website featuring glassmorphism and custom animations.</p>
+                        <span class="badge" style="margin-top: 15px; display: inline-block;">View Details</span>
+                    </div>
+
+                    <div class="skill-card" onclick="openModal('ecommerce')">
+                        <i class="fas fa-shopping-cart skill-icon"></i>
+                        <h3>E-Commerce App</h3>
+                        <p>Full-stack shopping platform with secure checkout and user authentication.</p>
+                        <span class="badge" style="margin-top: 15px; display: inline-block;">View Details</span>
+                    </div>
+
+                    <div class="skill-card" onclick="openModal('weather')">
+                        <i class="fas fa-cloud-sun skill-icon"></i>
+                        <h3>Weather Dashboard</h3>
+                        <p>Real-time weather tracking using live APIs and location-based data.</p>
+                        <span class="badge" style="margin-top: 15px; display: inline-block;">View Details</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience" class="section experience-section">
             <div class="container">
                 <h2 class="section-heading" data-aos="fade-up">Professional Journey</h2>
@@ -110,7 +139,7 @@
                     <div class="contact-info">
                         <h3>Let's Collaborate</h3>
                         <p>Currently looking for new opportunities. My inbox is always open!</p>
-                        <div class="info-item"><i class="fas fa-envelope"></i> <span>email@example.com</span></div>
+                        <div class="info-item"><i class="fas fa-envelope"></i> <span>bhuradharmesh407@gmail.com</span></div>
                         <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span>Gujarat, India</span></div>
                     </div>
                     <form id="contact-form" class="glass-form">
@@ -123,6 +152,13 @@
             </div>
         </section>
     </main>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content glass-form">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <footer>
         <p>© 2026 Bhura Dharmesh. Built with Passion.</p>
